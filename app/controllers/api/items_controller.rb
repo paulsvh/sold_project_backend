@@ -6,12 +6,7 @@ class Api::ItemsController < ApplicationController
     end
 
     def create
-        item = Item.new(item_params)
-        if item.save
-            render json: item, status: :accepted
-        else
-            render json: {errors: item.errors.full_messages}, status: :unprocessible_entity
-        end
+        item = @user.items.build(item_params)
     end
 
     def show
@@ -25,6 +20,10 @@ class Api::ItemsController < ApplicationController
     end
 
     private
+
+    def set_user
+        @user = User.find(params[:user_id])
+    end
 
     def item_params
         params.require(:item).permit(:title, :description, :condition, :value, :image [], :user_id)
