@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-
-  get '/test', to: 'application#test'
-
+namespace :api do
+  resources :users, only: [:index, :create, :show]
+end
 
 
 end
