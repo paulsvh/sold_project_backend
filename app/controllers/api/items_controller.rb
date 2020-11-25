@@ -2,13 +2,13 @@ class Api::ItemsController < ApplicationController
 
     def index
         items = Item.all
-        render json: ItemSerializer.new(items)
+        render json: items
     end
 
     def create
         item = Item.new(item_params)
         if item.save
-            render json: ItemSerializer.new(item), status: :accepted
+            render json: item, status: :accepted
         else
             render json: {errors: item.errors.full_messages}, status: :unprocessible_entity
         end
@@ -16,7 +16,7 @@ class Api::ItemsController < ApplicationController
 
     def show
         item = Item.find_by(id: params[:id])
-        render json: ItemSerializer.new(item)
+        render json: item
     end
 
     def destroy
@@ -27,7 +27,7 @@ class Api::ItemsController < ApplicationController
     private
 
     def item_params
-        params.require(:item).permit(:title, :description, :condition, :value, :image: [], :user_id)
+        params.require(:item).permit(:title, :description, :condition, :value, :image [], :user_id)
     end
     
 end
