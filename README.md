@@ -1,24 +1,5 @@
-# README
+# Sold
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* This is the backend of my Flatiron final project, built on Rails with a Postgresql database
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Front-end can be found here https://github.com/paulsvh/sold_project_frontend
