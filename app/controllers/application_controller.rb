@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::API
-        #spoofed current user method to send a user to frontend
+    include ::ActionController::Cookies
+    
         def current_user
-            User.first
+            User.find_by(id: session[:user_id])
         end
 
         def logged_in?
