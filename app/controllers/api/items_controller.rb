@@ -1,12 +1,18 @@
 class Api::ItemsController < ApplicationController
 
     def index
-        items = Item.all
-        render json: items
+        if logged_in?
+            items = current_user.items
+            render json: items
+        else
+            render json: {
+                error: "You must be logged in to see items for sale!"
+            }
+        end
     end
 
     def create
-        item = Item.new(item_params)
+        item = current_user.items.build(item_params)
         if item.save
             render json: item, status: :created, location: item
         else
