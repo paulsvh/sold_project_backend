@@ -14,7 +14,7 @@ class Api::ItemsController < ApplicationController
     def create
         item = current_user.items.build(item_params)
         if item.save
-            render json: item, status: :created, location: item
+            render json: item, status: :created
         else
             render json: {errors: item.errors.full_messages}, status: :unprocessible_entity
         end
