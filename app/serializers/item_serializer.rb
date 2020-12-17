@@ -6,8 +6,9 @@ class ItemSerializer < ActiveModel::Serializer
   def image
     if object.image.attached?
       {
-        url: rails_blob_url(object.image)
+        url: rails_blob_url(object.featured_image)
       }
     end
   end
+
 end
