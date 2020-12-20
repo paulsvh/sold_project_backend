@@ -11,6 +11,11 @@ class Api::ItemsController < ApplicationController
         end
     end
 
+    def all_items
+        items = Item.all
+        render json: items
+    end
+
     def create
         item = current_user.items.build(item_params)
         if item.save
