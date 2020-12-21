@@ -30,6 +30,15 @@ class Api::ItemsController < ApplicationController
         render json: item
     end
 
+    def update
+        item = Item.find_by(id: params[:id])
+        if item.update(item_params)
+            render json: item, status: :ok
+        else
+            render json: {errors: item.errors.full_messages}, status: :unprocessible_entity
+        end
+    end
+
     def destroy
         item = Item.find_by(id: params[:id])
         item.destroy
