@@ -42,9 +42,9 @@ class Api::ItemsController < ApplicationController
     def destroy
         item = Item.find_by(id: params[:id])
         if item.destroy
-            render json: {message: "Trip successfully removed"}, status: :ok
+            render json: {message: "Item successfully removed"}, status: :ok
         else
-            render json: {error: "You really goofed something up! Trip not found and/or not destroyed"}, status: :unprocessible_entity
+            render json: {error: "You really goofed something up! Item not found and/or not destroyed"}, status: :unprocessible_entity
         end
     end
 
